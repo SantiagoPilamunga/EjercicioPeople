@@ -1,4 +1,8 @@
-﻿using People.Models;
+﻿using SQLite;
+using People.Models;
+using Android.Hardware;
+
+
 
 namespace People;
 
@@ -6,13 +10,18 @@ public class PersonRepository
 {
     string _dbPath;
 
+    private SQLiteConnection conn;
+
     public string StatusMessage { get; set; }
 
     // TODO: Add variable for the SQLite connection
 
     private void Init()
     {
-        // TODO: Add code to initialize the repository         
+        if (conn != null)
+            return;
+        conn = new SQLiteConnection(_dbPath);
+        conn.CreateTable<Person>();
     }
 
     public PersonRepository(string dbPath)
