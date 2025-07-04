@@ -1,8 +1,5 @@
 ﻿using SQLite;
 using People.Models;
-using Android.Hardware;
-
-
 
 namespace People;
 
