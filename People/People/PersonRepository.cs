@@ -43,8 +43,6 @@ public class PersonRepository
 
             result = conn.Insert(new Person { Name = name });
 
-            // TODO: Insert the new person into the database
-            result = 0;
 
             StatusMessage = string.Format("{0} record(s) added (Name: {1})", result, name);
         }
