@@ -35,10 +35,13 @@ public class PersonRepository
         try
         {
             // TODO: Call Init()
+            Init();
 
             // basic validation to ensure a name was entered
             if (string.IsNullOrEmpty(name))
                 throw new Exception("Valid name required");
+
+            result = conn.Insert(new Person { Name = name });
 
             // TODO: Insert the new person into the database
             result = 0;
@@ -54,10 +57,10 @@ public class PersonRepository
 
     public List<Person> GetAllPeople()
     {
-        // TODO: Init then retrieve a list of Person objects from the database into a list
         try
         {
-            
+            Init();
+            return conn.Table<Person>().ToList();
         }
         catch (Exception ex)
         {
